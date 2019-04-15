@@ -1,0 +1,61 @@
+server:
+  port: 2002
+  tomcat:
+    max-threads: 50  # 设置Tomcat最大线程数 模拟熔断机制
+
+# 以下为 XXL-Job配置
+# log config
+logging:
+  config: classpath:logback.xml
+xxl:
+  job:
+    admin:
+      ### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    ### xxl-job executor address
+    executor:
+      appname: xxl-job-test
+      ip:
+      port: 9999
+      ### xxl-job log path
+      logpath: /data/applogs/xxl-job/jobhandler
+      ### xxl-job log retention days
+      logretentiondays: -1
+    ### xxl-job, access token
+    accessToken:
+
+spring:
+  application:
+    name: web-test
+  profiles:
+    active: a
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/monitor?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 8103
+  cloud:
+    config:  #读取server-config配置中心服务的配置
+      label: master
+      profile: dev #读取码云上 config-client-dev.properties 配置文件   也可创建 config-client-pre.properties  则  profile: pre
+      uri: http://localhost:2004/ #server-config服务 的地址
+
+# hystrix 熔断机制配置
+feign:
+  hystrix:
+    enabled: true
+    # 设置连接超时时间 如果请求大于4秒则直接走 FallBack 默认不配置则是1秒
+    hystrix:
+      command:
+        default:
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 4000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:2000/eureka/
+

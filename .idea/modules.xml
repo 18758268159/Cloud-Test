@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Cloud.iml" filepath="$PROJECT_DIR$/Cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-config/server-config.iml" filepath="$PROJECT_DIR$/server-config/server-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-eureka/service-eureka.iml" filepath="$PROJECT_DIR$/service-eureka/service-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-zuul/service-zuul.iml" filepath="$PROJECT_DIR$/service-zuul/service-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-ehcatch/web-ehcatch.iml" filepath="$PROJECT_DIR$/web-ehcatch/web-ehcatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-mvc/web-mvc.iml" filepath="$PROJECT_DIR$/web-mvc/web-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-test/web-test.iml" filepath="$PROJECT_DIR$/web-test/web-test.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!-- 引入配置文件-->
+    <properties resource="mybatis-generator.properties"/>
+
+    <classPathEntry location="${classPath}"/>
+
+    <context id="context1">
+        <!-- 让model类继承自Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!-- 自动生成toString方法-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自动生成equals方法和hashcode方法-->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <!--自定义Mapper插件，给所有client类加@Mapper注解-->
+        <plugin type="com.ys.PluginAdapterForHibernate"/>
+        <!-- 生成中文注释 -->
+        <commentGenerator type="com.ys.MyCommentGenerator">
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}" userId="${jdbc_user}"
+                        password="${jdbc_password}"/>
+
+        <javaModelGenerator targetPackage="${package}.dao"
+                            targetProject="${project}"/>
+
+        <sqlMapGenerator targetPackage="${package}.dao"
+                         targetProject="${project}"/>
+
+        <javaClientGenerator targetPackage="${package}.dao"
+                             targetProject="${project}" type="XMLMAPPER"/>
+
+        <!-- 文章 -->
+        <table tableName="tab_data_dictionary" domainObjectName="AdArticleEntity" mapperName="AdArticleRepository" />
+
+    </context>
+</generatorConfiguration>

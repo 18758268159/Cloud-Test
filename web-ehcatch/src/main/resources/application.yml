@@ -1,0 +1,50 @@
+###端口号配置
+server:
+  port: 2005
+###数据库配置
+spring:
+  #redis 配置 redis配置需要放在spring下面 不然无法扫描到
+      redis:
+        database: 0 #redis 共有16个库 默认存放在第0个库
+        host: 192.168.159.128
+        port: 6379
+        password: 123
+        jedis:
+          pool:
+            max-active: 8
+            max-wait: -1
+            max-idle: 8
+            min-idle: 0
+        timeout: 10000
+      application:
+        name: web-ehcatch
+      datasource:
+        url: jdbc:mysql://127.0.0.1:3306/ethan?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: 8103
+        driver-class-name: com.mysql.jdbc.Driver
+        test-while-idle: true
+        test-on-borrow: true
+        validation-query: SELECT 1 FROM DUAL
+        time-between-eviction-runs-millis: 300000
+        min-evictable-idle-time-millis: 1800000
+#  activiti:
+#    check-process-definitions: false
+#    database-schema-update: false
+#    #保存历史数据级别设置为full最高级别，便于历史数据的追溯
+#    history-level: full
+spring.activiti.check-process-definitions: false
+
+
+# 缓存配置读取
+cache:
+  type: ehcache
+  ehcache:
+    config: classpath:app1_ehcache.xml
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:2000/eureka/
+
+

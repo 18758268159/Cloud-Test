@@ -1,0 +1,37 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:2000/eureka/
+server:
+  port: 2003
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api-web-mvc/**
+      service-id: web-mvc
+    api-b:
+      path: /api-web-test/**
+      service-id: web-test
+    api-c:
+      path: /api-web-ehcatch/**
+      service-id: web-ehcatch
+#  host:
+#    connect-timeout-millis: 60000
+#  #    socket超时时间，如果使用service-id方式是不用配置的
+#  #    socket-timeout-millis: 3000
+#
+## hystrix 熔断机制配置
+#feign:
+#  hystrix:
+#    enabled: true
+#    # 设置连接超时时间 如果请求大于4秒则直接走 FallBack 默认不配置则是1秒
+#    hystrix:
+#      command:
+#        default:
+#          execution:
+#            isolation:
+#              thread:
+#                timeoutInMilliseconds: 4000
