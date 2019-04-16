@@ -1,7 +1,10 @@
 package com.ethan.web.webmvc.controller;
 
 import com.ethan.web.webmvc.cache.MapCache;
+import com.ethan.web.webmvc.util.SpringContextUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class MapCatchController {
 
     @Autowired
@@ -26,6 +30,7 @@ public class MapCatchController {
     @RequestMapping(value = "/putList", method = {RequestMethod.GET, RequestMethod.POST})
     public void put(String key) {
 
+//        LoggerFactory
         List<String> data = new ArrayList<>();
         data.add("张三");
         data.add("张三");
@@ -44,6 +49,17 @@ public class MapCatchController {
     @RequestMapping(value = "/remove", method = {RequestMethod.GET, RequestMethod.POST})
     public void remove(String key) {
         mapCache.remove(key);
+    }
+
+
+    /**
+     * SpringContextUtil 测试
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getSpringContext", method = {RequestMethod.GET, RequestMethod.POST})
+    public void remove() {
+        log.info("aaaaaa");
+        ApplicationContext applicationContext =  SpringContextUtil.getApplicationContext();
     }
 
 }

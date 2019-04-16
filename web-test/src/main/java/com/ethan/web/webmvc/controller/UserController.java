@@ -3,15 +3,16 @@ package com.ethan.web.webmvc.controller;
 import com.ethan.web.webmvc.dao.AdArticleEntity;
 import com.ethan.web.webmvc.feign.WebMvcFeign;
 import com.ethan.web.webmvc.service.WebDataService;
+import groovy.util.logging.Slf4j;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import sun.rmi.runtime.Log;
 
 import java.util.List;
 
 @RestController
+@Slf4j
 public class UserController {
 
     @Autowired

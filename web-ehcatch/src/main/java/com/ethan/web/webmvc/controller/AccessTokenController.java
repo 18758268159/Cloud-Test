@@ -51,7 +51,7 @@ public class AccessTokenController extends BaseApiService {
             jSONObject.put("accessToken", accessToken);
             return setResultSuccessData(jSONObject);
         } else {
-            return setResultError("当前AccessToken不可用!"); // test
+            return setResultError("当前AccessToken不可用!");
         }
     }
 

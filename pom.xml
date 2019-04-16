@@ -45,6 +45,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--@Slf4j 注解的使用-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.12</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -79,7 +88,7 @@
         </repository>
     </repositories>
 
-    <!--jitpack仓库-->
+    <!--jitpack仓库  需装  intellij idea安装lombok插件-->
     <pluginRepositories>
         <pluginRepository>
             <id>jitpack.io</id>
